@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AccountController!{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1>Minha conta</h1>
+        Holla, {{ app.user.firstname }} o seu espaço esta em construçao. <br>
+        {% if is_granted('ROLE_ADMIN') %}
+            <a href="/admin">Cessar o backoffice</a>
+        {% endif %}
+        <br>
+        <a href="{{ path('account_password') }}">Alterar a minha palavra passe</a>
+    </div>
+{% endblock %}
