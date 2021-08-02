@@ -6,60 +6,103 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@300&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset("assets/css/custom.css") }}">
+    <link rel="icon" href="{{ asset("uploads/logo.png") }}">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
     <title>{% block title %}TV Cabinda - Informaçao de e sobre Cabinda{% endblock %}</title>
 </head>
-<body >
-<div id="cabecalho">
+<body>
+<div id="cabecalho" class="cabecalho">
     {% if block('cabecalho1') is defined %}
-        <header id="cabecalho1" class="d-flex bd-highlight align-items-center d-block">
-            <a  class="p-2 flex-grow-1 bd-highlight text-hide" href="#"><img src="{{ asset("uploads/logo.png") }}" alt="">TV Cabinda</a>
+        <header id="cabecalho1" class="d-flex bd-highlight align-items-center">
+            <a  class="p-2 flex-grow-1 bd-highlight text-hide d-none d-md-block" href="{{ path('home') }}"><img src="{{ asset("uploads/logo.png") }}" alt="logo da TV Cabinda">TV Cabinda</a>
+            <a  class="p-2 flex-grow-1 d-md-none text-decoration-none" href="{{ path('home') }}">TV Cabinda</a>
             {% if app.user  %}
-                <a class="p-2 bd-highlight" href="{{ path('account') }}"><small>{{ app.user.firstname }}</small> </a>
-                <a class="p-2 bd-highlight" href="{{ path('app_logout') }}">Sair</a>
+                <a class="p-2 bd-highlight text-decoration-none" href="{{ path('account') }}"><small>{{ app.user.firstname }}</small> </a>
+                <a class="p-2 bd-highlight text-decoration-none" href="{{ path('app_logout') }}">Sair</a>
             {% else %}
-                <a class="p-2 bd-highlight" href="{{ path('app_login') }}">Entrar</a>
-                <a class="p-2 bd-highlight" href="{{ path('register') }}">Cadastrar</a>
+                <a class="p-2 bd-highlight text-decoration-none" href="{{ path('app_login') }}">Entrar</a>
+                <a class="p-2 bd-highlight text-decoration-none" href="{{ path('register') }}">Cadastrar</a>
             {% endif %}
-            <a class="p-2 bd-highlight" href="https://www.facebook.com/tvcabinda/"><img src="uploads/facebook.png"></a>
-            <a class="p-2 bd-highlight" href="https://www.instagram.com/tvcabinda/"><img src="uploads/instagram.png"></a>
-            <a class="p-2 bd-highlight" href="https://www.youtube.com/channel/UCuwtrpqG0kJkvzXIqwQLPwg"><img src="uploads/youtube.png"></a>
+            <a class="p-2 " href="https://www.facebook.com/tvcabinda/"><span class="iconify" data-icon="logos:facebook" data-inline="false"></span>
+            <a class="p-2 " href="https://www.instagram.com/tvcabinda/"><span class="iconify" data-icon="brandico:instagram" data-inline="false" style="color: red;"></span></a>
+            <a class="p-2 " href="https://www.youtube.com/channel/UCuwtrpqG0kJkvzXIqwQLPwg"><span class="iconify" data-icon="logos:youtube" data-inline="false"></span></a>
         </header>
     {% endif %}
-    <div id="cabecalho2" class="nav-scroller py-1 mb-1">
+    <div id="cabecalho2" class="nav-scroller py-1 mb-1 d-none d-md-block cabecalho2">
         <nav class="nav d-flex justify-content-between ">
-            <a class="p-2 item-nav" href="tecnologia.html">Início</a>
-            <a class="p-2 item-nav" href="tecnologia.html">Tecnologia</a>
-            <a class="p-2 item-nav" href="cultura.html">Cultura</a>
-            <a class="p-2 item-nav" href="negocios.html">Negocios</a>
-            <a class="p-2 item-nav" href="politica.html">Politica</a>
-            <a class="p-2 item-nav" href="educaçao.html">Educaçao</a>
-            <a class="p-2 item-nav" href="ciencia.html">Science</a>
-            <a class="p-2 item-nav" href="saude.html">Saude</a>
-            <a class="p-2 item-nav" href="moda.html">Moda</a>
-            <a class="p-2 item-nav" href="viagens.html">Viagens</a>
+            <a class="p-2 item-nav" href="{{ path('home') }}">Início</a>
+            <a class="p-2 item-nav" href="{{ path('category_politica') }}">Politica</a>
+            <a class="p-2 item-nav" href="{{ path('category_economia') }}">Economia</a>
+            <a class="p-2 item-nav" href="{{ path('category_saude') }}">Saude</a>
+            <a class="p-2 item-nav" href="{{ path('category_educacao') }}">Educaçao</a>
+            <a class="p-2 item-nav" href="{{ path('category_cultura') }}">Cultura</a>
+            <a class="p-2 item-nav" href="{{ path('category_sociedade') }}">Sociedade</a>
+            <a class="p-2 item-nav" href="{{ path('category_tecnologia') }}">Tecnologia</a>
+            <a class="p-2 item-nav" href="{{ path('category_negocios') }}">Negocios</a>
+            <a class="p-2 item-nav" href="{{ path('category_ciencia') }}">Ciência</a>
+            <a class="p-2 item-nav" href="{{ path('category_estilo_de_vida') }}">Estilo de Vida</a>
+            <a class="p-2 item-nav" href="{{ path('category_viagens') }}">Viagens</a>
         </nav>
     </div>
+    <div class="d-block d-md-none cabecalho2">
+        <ul class="nav nav-pills justify-content-around">
+            <li class="nav-item"><a class="p-2 item-nav" href="{{ path('home') }}">Início</a></li>
+            <li class="nav-item"><a class="p-2 item-nav" href="{{ path('category_politica') }}">Politica</a></li>
+            <li class="nav-item"><a class="p-2 item-nav" href="{{ path('category_economia') }}">Economia</a></li>
+            <li class="nav-item"><a class="p-2 item-nav" href="{{ path('category_saude') }}">Saude</a></li>
+            <li class="nav-item dropdown ">
+                <a class="nav-link item-nav p-2 mb-auto" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Ver Mais
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="p-2 dropdown-item abc" href="{{ path('category_educacao') }}">Educaçao</a>
+                    <a class="p-2 dropdown-item abc" href="{{ path('category_cultura') }}">Cultura</a>
+                    <a class="p-2 dropdown-item abc" href="{{ path('category_tecnologia') }}">Tecnologia</a>
+                    <a class="p-2 dropdown-item abc" href="{{ path('category_negocios') }}">Negocios</a>
+                    <a class="p-2 dropdown-item abc" href="{{ path('category_ciencia') }}">Ciência</a>
+                    <a class="p-2 dropdown-item abc" href="{{ path('category_estilo_de_vida') }}">Estilo de Vida</a>
+                    <a class="p-2 dropdown-item abc" href="{{ path('category_viagens') }}">Viagens</a>
+                </div>
+            </li>
+        </ul>
+    </div>
 </div>
-{% block content %}
 
-{% endblock %}
+    {% block content %}
+
+    {% endblock %}
 
 {% if block('footer') is defined %}
-    <footer class="blog-footer bg-light text-dark text-center p-1">
-        <span class=""> tv-Cabinda </span> <br>
-        <p><small class="text-muted"> © {{ "now"|date("Y") }} </small></p>
+    <footer class="bg-primary">
+        <div class="d-flex bg-primary align-items-center d-block">
+            <a  class="p-2 flex-grow-1 bd-highlight text-hide" href="#"><img src="{{ asset("uploads/logo.png") }}" alt="Logo da TV Cabinda" Class="d-none d-md-block">TV Cabinda</a>
+            <span class="p-2 bd-highlight text-white"> Siga a TV Cabinda nas redes sociais</span>
+            <a class="p-2 " href="https://www.facebook.com/tvcabinda/"><span class="iconify" data-icon="logos:facebook" data-inline="false"></span>
+            <a class="p-2 " href="https://www.instagram.com/tvcabinda/"><span class="iconify" data-icon="brandico:instagram" data-inline="false" style="color: red;"></span></a>
+            <a class="p-2 " href="https://www.youtube.com/channel/UCuwtrpqG0kJkvzXIqwQLPwg"><span class="iconify" data-icon="logos:youtube" data-inline="false"></span></a>
+        </div>
+        <div class="d-flex bg-danger justify-content-around d-block">
+            <a class="p-2 bd-highlight text-white footer2-item" href="{{ path('rodape_sobre') }}">Sobre TV Cabinda</a>
+            <a class="p-2 bd-highlight text-white footer2-item" href="#">Trabalhe conosco</a>
+            <a class="p-2 bd-highlight text-white footer2-item" href="#">Fale conosco</a>
+            <a class="p-2 bd-highlight text-white footer2-item" href="#">Termos e condições de uso</a>
+        </div>
     </footer>
 {% endif %}
 
 <!-- Optional JavaScript -->
+<script src="https://kit.fontawesome.com/5109d25905.js" crossorigin="anonymous"></script>
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.js"></script>
+<script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
 <script src="{{ asset('assets/js/script.js') }}"></script>
 </body>
 </html>

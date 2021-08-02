@@ -1,0 +1,181 @@
+{% extends 'base.html.twig' %}
+{% block cabecalho1 %}{% endblock %}
+{% block content %}
+
+    <div class="container">
+        <secttion class="modificaçao row ">
+            <article class="novidades col-md-8 col-xs-12 ">
+                <div class="row">
+                    <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+                        <ol class="carousel-indicators">
+                            <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+                            <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+                            <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+                            <li data-target="#carouselExampleCaptions" data-slide-to="3"></li>
+                            <li data-target="#carouselExampleCaptions" data-slide-to="4"></li>
+                        </ol>
+                        <div class="carousel-inner" >
+                            <div class="carousel-item active " >
+                            <a class="text-decoration-none" href="{{ path('show_news', {'slug': newsBest[0].slug}) }}">
+                                <img src="/uploads/{{ newsBest[0].foto }}" class="d-block " alt="..." style="height: 300px; width: 800px;  opacity: 0.8;">
+                            </a>
+                            <div class="carousel-caption d-none d-md-block">
+                                <a class="text-decoration-none" href="{{ path('show_news', {'slug': newsBest[0].slug}) }}">
+                                    <h5 class="text-white font-weight-bold">{{ newsBest[0].category }}</h5>
+                                    <p class="text-white">{{ newsBest[0].title }}</p>
+                                </a>
+                            </div>
+                            </div>
+                            <div class="carousel-item ">
+                            <a class="text-decoration-none" href="{{ path('show_news', {'slug': newsBest[1].slug}) }}">
+                                <img src="/uploads/{{ newsBest[1].foto }}" class="d-block " alt="..." style="height: 300px; width: 800px;  opacity: 0.8;">
+                            </a>
+                            <div class="carousel-caption d-none d-md-block">
+                                <a class="text-decoration-none" href="{{ path('show_news', {'slug': newsBest[1].slug}) }}">
+                                    <h5 class="text-white font-weight-bold">{{ newsBest[1].category }}</h5>
+                                    <p class="text-white">{{ newsBest[1].title }}</p>
+                                </a>
+                            </div>
+                            </div>
+                            <div class="carousel-item ">
+                            <a class="text-decoration-none" href="{{ path('show_news', {'slug': newsBest[2].slug}) }}">
+                                <img src="/uploads/{{ newsBest[2].foto }}" class="d-block " alt="..." style="height: 300px; width: 800px;  opacity: 0.8;">
+                            </a>
+                            <div class="carousel-caption d-none d-md-block">
+                                <a class="text-decoration-none" href="{{ path('show_news', {'slug': newsBest[2].slug}) }}">
+                                    <h5 class="text-white font-weight-bold">{{ newsBest[2].category }}</h5>
+                                    <p class="text-white">{{ newsBest[2].title }}</p>
+                                </a>
+                            </div>
+                            </div>
+                            <div class="carousel-item ">
+                            <a class="text-decoration-none" href="{{ path('show_news', {'slug': newsBest[3].slug}) }}">
+                                <img src="/uploads/{{ newsBest[3].foto }}" class="d-block " alt="..." style="height: 300px; width: 800px;  opacity: 0.8;">
+                            </a>
+                            <div class="carousel-caption d-none d-md-block">
+                                <a class="text-decoration-none" href="{{ path('show_news', {'slug': newsBest[3].slug}) }}">
+                                    <h5 class="text-white font-weight-bold">{{ newsBest[3].category }}</h5>
+                                    <p class="text-white">{{ newsBest[3].title }}</p>
+                                </a>
+                            </div>
+                            </div>
+                            <div class="carousel-item ">
+                            <a class="text-decoration-none" href="{{ path('show_news', {'slug': newsBest[4].slug}) }}">
+                                <img src="/uploads/{{ newsBest[4].foto }}" class="d-block " alt="..." style="height: 300px; width: 800px;  opacity: 0.8;">
+                            </a>
+                            <div class="carousel-caption d-none d-md-block">
+                                <a class="text-decoration-none" href="{{ path('show_news', {'slug': newsBest[4].slug}) }}">
+                                    <h5 class="text-white font-weight-bold">{{ newsBest[4].category }}</h5>
+                                    <p class="text-white">{{ newsBest[4].title }}</p>
+                                </a>
+                            </div>
+                            </div>
+                        </div>
+                        <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                        </div>
+                </div>
+                <div class="row mt-1 ">
+                    {% for noticia in news|slice(0,6)|reverse %}
+                        <div class="col-sm-6 col-md-4 mb-1 p-1 d-none d-sm-block">
+                            <div class="card h-100 cardIsede">
+                               
+                                <a class="text-decoration-none text-body" href="{{ path('show_news', {'slug': noticia.slug}) }}">
+                                    {% if noticia.video|length==0 %}
+                                        <img src="/uploads/{{ noticia.foto }}" class="card-img img-thumbnail" alt="{{ noticia.foto }}">
+                                    {% else %}
+                                        <div id="vd" class="embed-responsive embed-responsive-1by1">
+                                            <iframe width="560" height="315" src="{{ noticia.video }}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                        </div>
+                                    {% endif %}
+                                    <div class="card-body mt-0 p-1">
+                                        <h5 class="card-title text-primary">{{ noticia.category }}</h5>
+                                        <hr>
+                                        <p class="card-text text-left">{{ noticia.title }}</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </article>
+            <aside class=" bg-info col-md-4 p-0">
+                    <div class="row">
+                        <div class="col-12 tituloSec">
+                            <h2 class="titulo bg-white mt-1 text-danger rounded m-2" >Cabinda</h2>
+                        </div>
+                    </div>
+                    {% for noticia in cabinda %}
+                        <div class="row g-0 m-2 p-1 bg-white cardIsede">
+                            <div class="col-5 m-0 p-0">
+                                <a class="text-decoration-none" href="/noticia/engenheiro-agostinho-chicaia-fala-do-assassinato-do-mais-velho">
+                                    {% if noticia.video|length==0 %}
+                                        <img src="/uploads/{{ noticia.foto }}" class="d-block w-100  h-100 card-img" alt="b4100c45f099135b34e399a6444cd59bb729fcbc.jpg">
+                                    {% else %}
+                                        <div id="vd" class="embed-responsive embed-responsive-4by3">
+                                           <iframe width="560" height="315" src="{{ noticia.video }}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                        </div>
+                                    {% endif %} 
+                                </a>
+                            </div>
+                            <div class="col-7 m-0 p-0">
+                                <a class="text-decoration-none text-body" href="/noticia/engenheiro-agostinho-chicaia-fala-do-assassinato-do-mais-velho">
+                                    <div class="card-body p-1">
+                                        <h5 class="card-title text-primary">{{ noticia.category }}</h5>
+                                        <hr class="mb-0 pb-0">
+                                        <p class="card-text text-right mt-0 pt-0"><small class="text-muted m-0 p-0">{{ noticia.date|date('d/m/Y') }}</small></p>
+                                        <p class="card-text text-left">{{ noticia.title }}</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    {% endfor %}
+            </aside>
+        </section>
+    </div>
+    <div class="container">
+        <section class="row bg-dark mt-1 p-1">
+            <div class="col-12 tituloSec p-0">
+                <h2 class="titulo bg-white mt-1 text-danger rounded m-0">TV Cabinda Informa</h2>
+            </div>
+            <div class="row">
+                {% for noticia in news|sort((a, b) => a.date <=> b.date)|reverse %}
+                    <div class="col-md-4 mb-1 p-2">
+                        <div class="row h-100 g-0 m-2 p-1 bg-white cardIsede">
+                            <div class="col-5 m-0 p-0">
+                                <a class="text-decoration-none" href="/noticia/engenheiro-agostinho-chicaia-fala-do-assassinato-do-mais-velho">
+                                {% if noticia.video|length==0 %}
+                                    <img src="/uploads/{{ noticia.foto }}" class="d-block w-100  h-100 card-img" alt="b4100c45f099135b34e399a6444cd59bb729fcbc.jpg">
+                                {% else %}
+                                    <div id="vd" class="embed-responsive embed-responsive-4by3">
+                                        <iframe width="560" height="315" src="{{ noticia.video }}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                    </div>
+                                {% endif %}
+                                
+                                </a>
+                            </div>
+                            <div class="col-7 m-0 p-0">
+                                <a class="text-decoration-none text-body" href="/noticia/engenheiro-agostinho-chicaia-fala-do-assassinato-do-mais-velho">
+                                    <div class="card-body p-1">
+                                        <h5 class="card-title text-primary">Sociedade</h5>
+                                        <hr class="mb-0 pb-0">
+                                        <p class="card-text text-right mt-0 pt-0"><small class="text-muted m-0 p-0">{{ noticia.date|date('d/m/Y') }}</small></p>
+                                        <p class="card-text text-left">{{ noticia.title }}</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
+    </div>
+{% endblock %}
+{% block footer %}
+{% endblock %}

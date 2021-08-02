@@ -1,0 +1,137 @@
+/*Fonts*/
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200&display=swap');
+
+/*Variables*/
+    :root{
+        --font-size:1rem;
+    }
+/*Ressets*/
+ *{
+     box-sizing: border-box;
+     outline: none;
+     margin: 0;
+     padding: 0;
+ }
+ ul{
+     list-style: none;
+ }
+/*Basic style*/
+ body{
+    font-size:var(--font-size);
+    font-family: 'Poppins', sans-serif;
+ }
+
+ .tituloSec{
+     text-align:center;
+}
+ .main-content{
+     padding:1rem;
+ }
+
+#cabecalho{
+    background: aliceblue url('../../uploads/background-3104413_1920.jpg') no-repeat fixed center;
+    background-size: cover;
+}
+
+#cabecalho1{
+    border-bottom: 4px solid white;
+}
+
+#zona1{
+    background-color: azure;
+}
+.direitos{
+    vertical-align: middle;
+}
+a.footer2-item:link {text-decoration:none;}
+a.footer2-item:visited {text-decoration:none;}
+a.footer2-item:hover {text-decoration:none;}
+
+a.item-nav:link {text-decoration:none;}
+a.item-nav:visited {text-decoration:none;}
+a.item-nav:hover {text-decoration:none;}
+
+.item-nav {
+    display: inline-block;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-family: 'Shippori Mincho', serif;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-menu a:hover{
+    background-color: blue;
+    color: #ffffff;
+}
+.item-nav:hover {
+    background-color: blue;
+    color: #ffffff;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.row.rowCarousel {
+    margin-right: 0;
+    margin-left: 0;
+}
+
+.responsive {
+    padding: 0 6px;
+    float: left;
+    width: 24.99999%;
+  }
+
+  @media only screen and (max-width: 700px) {
+    .responsive {
+      width: 49.99999%;
+      margin: 6px 0;
+    }
+    img{
+        width: 500px;
+        height: 500px;
+    }
+  }
+  
+  @media only screen and (max-width: 500px) {
+    div.carousel-item img{
+        width: 100%;
+        height: 500px;
+    }
+  }
+
+  .cardIsede{
+    border-radius: 5px;
+  }
+
+  div.cardIsede:hover{
+    border: 1px solid #777;
+  }
+
+  .novidades{
+    background-color: black;
+  }
+  .titulo::after {
+    content: '';
+    display: block;
+    width: 100px;
+    border-top: 1px solid #e90814;
+    margin: 5px auto;
+    padding: 5px;
+}
+
+ 
+
+  
+
+

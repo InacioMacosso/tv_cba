@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}TV Cabinda - Estilo de vida{% endblock %}
+
+{% block content %}
+<div class="row row-cols-1 row-cols-md-6">
+    {% for noticia in estilo_de_vida %}
+        <div class="col mb-4">
+            <div class="card h-100 border-light">
+                <div class="row g-0 m-0 p-0 d-sm-none">
+                    <div class="col-5 m-0 p-0">
+                        <a class="text-decoration-none" href="{{ path('show_news', {'slug': noticia.slug}) }}">
+                            {% if noticia.video|length==0 %}
+                                <img src="/uploads/{{ noticia.foto }}" class="d-block w-100 h-100 card-img" alt="{{ noticia.foto}}">
+                            {% else %}
+                                <div id="vd" class="embed-responsive embed-responsive-4by3">
+                                    <iframe width="560" height="315" src="{{ noticia.video }}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                </div>
+                            {% endif %}
+                        </a>
+                    </div>
+                    <div class="col-7 m-0 p-0 align-self-end">
+                        <a class="text-decoration-none" href="{{ path('show_news', {'slug': noticia.slug}) }}">
+                            <div class="card-body p-1">
+                                <h5 class="card-title ">{{ noticia.category }}</h5>
+                                <hr>
+                                <p class="card-text text-left text-body">{{ noticia.title }}</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <a class="text-decoration-none d-none d-sm-block" href="{{ path('show_news', {'slug': noticia.slug}) }}">
+                    {% if noticia.video|length==0 %}
+                        <img src="/uploads/{{ noticia.foto }}" class="card-img" alt="{{ noticia.foto}}">
+                    {% else %}
+                        <div id="vd" class="embed-responsive embed-responsive-1by1">
+                            <iframe width="560" height="315" src="{{ noticia.video }}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                    {% endif %}
+                    <div class="card-body p-0">
+                        <h5 class="card-title">{{ noticia.category }}</h5>
+                        <hr>
+                        <p class="card-text text-left">{{ noticia.title }}</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

@@ -17,8 +17,12 @@ class AccountPasswordController extends AbstractController
     {
         $this->entityManager=$entityManager;
     }
+
     /**
      * @Route("/conta/alterar-a-minha-palvra-passe", name="account_password")
+     * @param Request $request
+     * @param UserPasswordEncoderInterface $encoder
+     * @return Response
      */
     public function index(Request $request, UserPasswordEncoderInterface $encoder): Response
     {
@@ -35,7 +39,7 @@ class AccountPasswordController extends AbstractController
                 $password=$encoder->encodePassword($user, $new_pwd);
                 $user->setPassword($password);
                 $this->entityManager->flush();
-                $notification="A sua palavra passe foi atualizada";
+                return $this->redirectToRoute("account");
             }else{
                 $notification="A tua palavra passe atual nao esta correta";
             }

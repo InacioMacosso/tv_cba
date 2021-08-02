@@ -64,6 +64,20 @@ class News
      */
     private $mundo;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="news")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $autor;
+
+    /**
+     * News constructor.
+     */
+    public function __construct()
+    {
+        $this->date = new \DateTime();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -176,4 +190,17 @@ class News
 
         return $this;
     }
+
+    public function getAutor(): ?User
+    {
+        return $this->autor;
+    }
+
+    public function setAutor(?User $autor): self
+    {
+        $this->autor = $autor;
+
+        return $this;
+    }
+
 }

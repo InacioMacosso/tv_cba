@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+{% block title %}TV Cabinda - Informaçao de e sobre Cabinda{% endblock %}
+{% block content %}
+    <main id="main" role="main" class="container" >
+        <h1 class="text-primary">{{ noticia.category }}</h1>
+        <div class="card mb-3 border-0">
+            {% if noticia.video|length==0 %}
+                <div class="card-img-top text-left">
+                    <img src="/uploads/{{ noticia.foto}}" class="img-fluid"  alt="{{ noticia.foto}}">
+                </div>
+            {% else%}
+                <div class="card-img-top">
+                    <div id="vd" class="embed-responsive embed-responsive-21by9">
+                        <iframe class="embed-responsive-item" src="{{ noticia.video }}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+            {% endif %}
+            <div class="card-body">
+                <h5 class="card-title"><strong class="text-uppercase text-primary">{{ noticia.mundo }}</strong> - {{ noticia.title }}</h5>
+                <div class="card-text text-justify">
+                    {{ noticia.body|raw }}
+                </div>
+            </div>
+            <div class="card-footer">
+                <small class="text-muted">{{ noticia.date|date('d/m/Y') }}</small>
+            </div>
+        </div>
+
+    </main><!-- /.container -->
+    
+{% endblock %}
+{% block footer %}
+{% endblock %}
